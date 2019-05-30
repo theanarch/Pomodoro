@@ -18,51 +18,37 @@
         Title="Pomodoro Technique" Height="350" Width="600" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="41*"/>
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="auto" MinWidth="589.512" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" MinHeight="76" />
+            <RowDefinition Height="auto" MinHeight="49" />
+            <RowDefinition />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
+        <Label x:Name="TimerLabel" Content="25:00" Grid.Row="2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="182.5" Margin="0,1.532,635.745,141.936" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Timer"/>
+        <Button Click="RunButton_Click" Name="RunButton" Content="Run" Grid.Row="3" Margin="52.5,39.244,45.685,72.624" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="Auto" Width="81.815" Grid.Column="2"/>
 
-        <Label x:Name="TimerLabel" Content="25:00" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="21.415,0"></Label>
+        <Button Click="ResetButton_Click" Name="ResetButton" Content="Reset" Grid.Row="3" Margin="17.5,39.244,10.685,72.624" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="Auto" Width="81.815" RenderTransformOrigin="-0.546,0.62" Grid.Column="1"/>
 
-        <Button Click="RunButton_Click" Name="RunButton" Content="Run" Grid.Column="2" Grid.Row="3" Margin="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-        </Button>
-
-        <Button Click="ResetButton_Click" Name="ResetButton" Content="Reset" Grid.Column="3" Grid.Row="3" Margin="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-        </Button>
-
-        <Button Click="StopButton_Click" Name="StopButton" Content="Stop" Grid.Column="4" Grid.Row="3" Margin="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
-        </Button>
-
-        <TextBox Grid.Column="5" Grid.Row="1" FontSize="14" FontWeight="Bold" Text="Nbr of times"/>
-        <Label x:Name="RestLabel" Grid.Column="3" Grid.Row="1" Content="Rest" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Label x:Name="RestCounter" Grid.Column="5" Grid.Row="2" FontSize="14" Content="-" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button Click="StopButton_Click" Name="StopButton" Content="Stop" Grid.Row="3" Margin="43.784,39.244,512.645,72.624" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="Auto" Width="81.816" Grid.Column="3"/>
+        <TextBox FontSize="14" FontWeight="Bold" Text="Nbr of times" Margin="75,42.068,479.512,7.332" Grid.Column="3" Grid.Row="1"/>
+        <Label x:Name="RestCounter" FontSize="14" Content="-" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="15.6" RenderTransformOrigin="2.979,0.446" Margin="110,0,512.645,141.936" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"/>
+        <Label x:Name="RestLabel" Content="Rest" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="150.748" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="11.867,15,17.385,0" Grid.Row="1" Grid.Column="2"/>
 
         <tb:TaskbarIcon x:Name="notifyIcon"
                     Visibility="Visible"
                     ToolTipText= "{Binding ElementName=MainWindow, Path=currentTimeForToolTip}"
                     MenuActivation="LeftOrRightClick"
                     IconSource="/Images/TrayIcons/pomodoro_ico.ico"
-                    PopupActivation="DoubleClick">
+                    PopupActivation="DoubleClick" Grid.ColumnSpan="2" Margin="0,0,34.512,0">
             <tb:TaskbarIcon.TrayToolTip>
                 <Border
                   Background="LightBlue"
@@ -81,6 +67,7 @@
                 </Border>
             </tb:TaskbarIcon.TrayToolTip>
         </tb:TaskbarIcon>
+        <Image Margin="10,5,0,16.532" Source="Images/TrayIcons/pomodoro_KFo_icon.ico" Stretch="Fill" RenderTransformOrigin="1.615,0.462" Grid.Row="1"/>
     </Grid>
 
 

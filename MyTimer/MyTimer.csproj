@@ -38,7 +38,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>pomodoro_KFo_icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=3.3.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
@@ -117,7 +118,10 @@
     <Resource Include="Images\TrayIcons\pomodoro_ico.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pomodoro_KFo_icon.ico" />
+    <Resource Include="Images\TrayIcons\Pomodoro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TrayIcons\pomodoro_KFo_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.3.3.5\build\Fody.targets" Condition="Exists('..\packages\Fody.3.3.5\build\Fody.targets')" />
