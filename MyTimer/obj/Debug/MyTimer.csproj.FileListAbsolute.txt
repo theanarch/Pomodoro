@@ -36,3 +36,22 @@ C:\Users\Kralj Torbica\source\repos\Pomodoro Pull\Pomodoro\MyTimer\obj\Debug\MyT
 C:\Users\Kralj Torbica\source\repos\Pomodoro Pull\Pomodoro\MyTimer\obj\Debug\MyTimer.csproj.CopyComplete
 C:\Users\Kralj Torbica\source\repos\Pomodoro Pull\Pomodoro\MyTimer\obj\Debug\MyTimer.exe
 C:\Users\Kralj Torbica\source\repos\Pomodoro Pull\Pomodoro\MyTimer\obj\Debug\MyTimer.pdb
+C:\Users\boto\Desktop\Pomodoro\MyTimer\bin\Debug\MyTimer.exe.config
+C:\Users\boto\Desktop\Pomodoro\MyTimer\bin\Debug\MyTimer.exe
+C:\Users\boto\Desktop\Pomodoro\MyTimer\bin\Debug\MyTimer.pdb
+C:\Users\boto\Desktop\Pomodoro\MyTimer\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
+C:\Users\boto\Desktop\Pomodoro\MyTimer\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.csprojAssemblyReference.cache
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MainWindow.g.cs
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\App.g.cs
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer_MarkupCompile.cache
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer_MarkupCompile.lref
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\App.baml
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MainWindow.baml
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.g.resources
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.Properties.Resources.resources
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.csproj.GenerateResource.cache
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.csproj.CoreCompileInputs.cache
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.csproj.CopyComplete
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.exe
+C:\Users\boto\Desktop\Pomodoro\MyTimer\obj\Debug\MyTimer.pdb

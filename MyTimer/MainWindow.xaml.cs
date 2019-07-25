@@ -19,22 +19,31 @@ namespace MyTimer
 {
     public partial class MainWindow : Window
     {
-        private static int WorkTimeMINUTES = 55;
-        private static int RestTimeMINUTES = 5;
+		#region Text for visualization
+		private const string TextStick = "|";
+		private const string TextBinder = "-";
+		private const string TextColon = ":";
 
-        private static string DisplayWorkTimeMINUTES = WorkTimeMINUTES.ToString();
-        private static string DisplayRestTimeMINUTES = RestTimeMINUTES.ToString();
+		private static string DisplayWorkTimeMINUTES = WorkTimeMINUTES.ToString();
+		private static string DisplayRestTimeMINUTES = RestTimeMINUTES.ToString();
 
-        private string DisplayStartWorkingTime = DisplayWorkTimeMINUTES + " : " + "00";
-        private string DisplayStartRestingTime = DisplayRestTimeMINUTES + " : " + "00";
+		private string DisplayStartWorkingTime = DisplayWorkTimeMINUTES + " " + TextColon + " " + "00";
+		private string DisplayStartRestingTime = DisplayRestTimeMINUTES + " " + TextColon + " " + "00";
+		#endregion
 
-        private static int WorkingTimeSECONDS = TimeSpan.FromSeconds(WorkTimeMINUTES).Seconds;
-        private static int RestTimeSECONDS = TimeSpan.FromSeconds(WorkTimeMINUTES).Seconds;
+		#region Time
+		private const int ShowAtLastRemainingTime = 10;
+		private static int WorkTimeMINUTES = 55;
+		private static int RestTimeMINUTES = 5;
 
-        public string currentTimeForToolTip;
+		private static int WorkingTimeSECONDS = WorkTimeMINUTES * 60;
+		private static int RestTimeSECONDS = WorkTimeMINUTES * 60;
+		#endregion
+
+		public string currentTimeForToolTip;
 
         private bool isRestState = false;
-        private double currentTime = WorkingTimeSECONDS;
+        private double currentTime;
         private int restCount = 0;
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
@@ -47,11 +56,11 @@ namespace MyTimer
             this.CurrentTimeTextBlock.Text = currentTimeForToolTip;
         }
 
-        void _notifyIcon_DoubleClick(object sender, EventArgs e)
+        private void _notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             if (!IsVisible)
             {
-                Show();
+                this.Show();
             }
 
             if (WindowState == WindowState.Minimized)
@@ -59,6 +68,18 @@ namespace MyTimer
                 WindowState = WindowState.Normal;
             }
         }
+
+		private void WindowShowLastRemainingTime()
+		{
+			if (currentTime == ShowAtLastRemainingTime && WindowState == WindowState.Minimized)
+			{
+				this.Show();
+				this.WindowState = WindowState.Normal;
+				this.Activate();
+				this.Topmost = true;
+				this.Focus();
+			}
+		}
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -82,14 +103,14 @@ namespace MyTimer
             RestLabel.Visibility = Visibility.Visible;
             restCount++;
 
-            if (RestCounter.Content.ToString().CompareTo("-") == 0 && restCount > 0)
+            if (RestCounter.Content.ToString().CompareTo(TextBinder) == 0 && restCount > 0)
             {
-                RestCounter.Content = "";
+                RestCounter.Content = string.Empty;
             }
 
             if (restCount > 0)
             {
-                RestCounter.Content += "|";
+                RestCounter.Content += TextStick;
             }
 
             currentTime = RestTimeSECONDS;
@@ -98,8 +119,8 @@ namespace MyTimer
 
         private void WorkState()
         {
-            currentTime = WorkingTimeSECONDS;
-            SetTimeTable(DisplayStartWorkingTime);
+			currentTime = WorkingTimeSECONDS;
+			SetTimeTable(DisplayStartWorkingTime);
             RestLabel.Visibility = Visibility.Hidden;
         }
 
@@ -126,12 +147,17 @@ namespace MyTimer
             ResetApp();
         }
 
+		private void ShowWindow()
+		{
+            RestLabel.Visibility = Visibility.Hidden;
+		}
+
         private void ResetApp()
         {
             SetTimeTable(DisplayStartWorkingTime);
             currentTime = WorkingTimeSECONDS;
             RestLabel.Visibility = Visibility.Hidden;
-            RestCounter.Content = "-";
+            RestCounter.Content = TextBinder;
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
@@ -142,6 +168,8 @@ namespace MyTimer
         private void Timer(object sender, EventArgs e)
         {
             currentTime--;
+			WindowShowLastRemainingTime();
+
             if (currentTime >= 0)
             {
                 var incrementMinutes = currentTime / 60;
@@ -154,15 +182,15 @@ namespace MyTimer
 
                 if (minutesInText.Length < 2)
                 {
-                    minutesInText = "0" + minutesInText;
+                    minutesInText = 0.ToString() + minutesInText;
                 }
 
                 if (secondsInText.Length < 2)
                 {
-                    secondsInText = "0" + secondsInText;
+                    secondsInText = 0.ToString() + secondsInText;
                 }
 
-                TimerLabel.Content = currentTimeForToolTip = this.CurrentTimeTextBlock.Text = minutesInText + " : " + secondsInText;
+                TimerLabel.Content = currentTimeForToolTip = this.CurrentTimeTextBlock.Text = minutesInText + " " + TextColon + " " + secondsInText;
             }
             else
             {
@@ -186,7 +214,7 @@ namespace MyTimer
                 else
                 {
                     restCount = 0;
-                    RestCounter.Content = "-";
+                    RestCounter.Content = TextBinder;
                     ResetApp();
                 }
                 isRestState = true;
