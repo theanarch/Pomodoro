@@ -23,21 +23,23 @@ namespace MyTimer
 		private const string TextStick = "|";
 		private const string TextBinder = "-";
 		private const string TextColon = ":";
-
-		private static string DisplayWorkTimeMINUTES = WorkTimeMINUTES.ToString();
-		private static string DisplayRestTimeMINUTES = RestTimeMINUTES.ToString();
-
-		private string DisplayStartWorkingTime = DisplayWorkTimeMINUTES + " " + TextColon + " " + "00";
-		private string DisplayStartRestingTime = DisplayRestTimeMINUTES + " " + TextColon + " " + "00";
 		#endregion
 
 		#region Time
-		private const int ShowAtLastRemainingTime = 10;
+		private const int ShowAtLastRemainingTimeSECONDS = 10;
 		private static int WorkTimeMINUTES = 55;
 		private static int RestTimeMINUTES = 5;
 
 		private static int WorkingTimeSECONDS = WorkTimeMINUTES * 60;
-		private static int RestTimeSECONDS = WorkTimeMINUTES * 60;
+		private static int RestTimeSECONDS = RestTimeMINUTES * 60;
+		#endregion
+		
+		#region Display text
+		private static string DisplayWorkTimeMINUTES = WorkTimeMINUTES.ToString();
+		private static string DisplayRestTimeMINUTES = RestTimeMINUTES.ToString();
+
+		private string DisplayStartWorkingTime = DisplayWorkTimeMINUTES + " " + TextColon + " " + "00";
+		private string DisplayStartRestingTime = DisplayRestTimeMINUTES + " " + TextColon + " " + "00"; 
 		#endregion
 
 		public string currentTimeForToolTip;
@@ -71,7 +73,7 @@ namespace MyTimer
 
 		private void WindowShowLastRemainingTime()
 		{
-			if (currentTime == ShowAtLastRemainingTime && WindowState == WindowState.Minimized)
+			if (currentTime == ShowAtLastRemainingTimeSECONDS && WindowState == WindowState.Minimized)
 			{
 				this.Show();
 				this.WindowState = WindowState.Normal;
